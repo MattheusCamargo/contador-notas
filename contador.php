@@ -1,13 +1,14 @@
 <?php
-    $valor= 102.75;
+    $valor= 102.75;     //Valor de entrada da operação
     
     
-    $n100= $valor;
+    $n100= $valor;      //Aqui o valor passa para a variável n100 para a primeira conferência
     
-    if ($n100> 50 && $n100>= (intval($n100/100))*100){
+    if ($n100> 50 && $n100>= (intval($n100/100))*100){  /*Aqui, se o valor que estiver em N100 for maior que 50 reais e maior ou igual a parte inteira da divisão de n100 por 100 vezes 100, 
+                                                        então ele fará a inserção do conteúdo de n100 menos a parte inteira da divisão de n100 por 100 vezes 100 para dentro da variável n50*/
         $n50= $valor-(intval($n100/100))*100;
     } else { 
-        $n50= $n100; 
+        $n50= $n100;      //caso o valor de n100 for menor que 50, então n50 vai receber o conteúdo de n100
     }
     
     if ($n50> 20 & $n50>= (intval($n50/50))*50){
@@ -45,7 +46,9 @@
     printf("----------------------<br/>");
     printf("<br/>");
     printf ("NOTAS:<br/>");
-    printf (intval($n100));
+    printf (intval($n100/100));     /*aqui, ele vai pegar o valor de n100 dividir por 100 e retornar só a arte inteira
+                                     que será o número de notas 100 que o valor possui. O retorno apenas da parte inteira
+                                     se dá pelo uso da função 'intval' */
     printf (" nota(s) de R$ 100.00<br/>");
     printf (intval($n50/50));
     printf (" nota(s) de R$ 50.00<br/>");
@@ -61,9 +64,13 @@
     printf (" moeda(s) de R$ 1.00<br/>");
     printf ("<br/>");
 
-    if (is_float($valor)){
+    if (is_float($valor)){  /*Aqui, ele faz a conferência se o $valor possui um valor real(float)
+                            atráves da função 'is_float' e se for float, ele executará os comandos
+                            para calcular a quantidade de moedas que serão utilizadas*/
         
-        $valor1= substr(strpbrk($valor, '.'), 1);
+        $valor1= substr(strpbrk($valor, '.'), 1); /*Aqui, através da função 'substr(strpbrk())' ele pega o 
+                                                    conteúdo da variável $valor e subtrai a parte inteira, deixando
+                                                    apenas a parte do float, a parte fracionada para trabalharmos*/
         
         $m50= $valor1;
 
